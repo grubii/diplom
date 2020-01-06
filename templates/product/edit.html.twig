@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit product{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% if app.user %}
+            <div class="float-right">
+                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+    {% endif %}
+    <a href="{{ path('list') }}"><button class="btn btn-primary">List Products</button></a>
+    <div class="example-wrapper">
+        <br>
+        <h2>Edit product</h2>
+        {{ form_start(EditProduct) }}
+            {{ form_row(EditProduct.name) }}
+            <br>
+            {{ form_row(EditProduct.price) }}
+            <br>
+            {{ form_row(EditProduct.description) }}
+            <br>
+            {{ form_row(EditProduct.img) }}
+            <br>
+            <button class="btn btn-success"><i class="fas fa-edit"></i> Edit</button>
+        {{ form_end(EditProduct) }}
+        <br><br>
+        {% if SuccessMsg != '' %}
+            <div class="alert alert-success" role="alert">
+                {{ SuccessMsg }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
