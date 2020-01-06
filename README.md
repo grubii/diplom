@@ -9,17 +9,24 @@
 
 
 # Установка:
+Запускаем локальный сайт
+```bash
+symfony server:start
+```
 
-- php bin/console doctrine:database:create <br>
-- php bin/console doctrine:schema:update <br>
-- symfony server:start <br>
-- yarn encore dev --watch <br>
-
-
+Запускаем вебпак
+```bash
+yarn encore dev --watch
+```
 
 ### Установка БД (var/diplom.sql)
+Создаём локальную базу
 ```bash
 php bin/console doctrine:database:create
+```
+Обновляем схему
+```bash
+php bin/console doctrine:schema:update
 ```
 Можно залить фикстуры (dev и test окружение)
 ```bash
