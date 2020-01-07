@@ -16,10 +16,13 @@ import $ from 'jquery';
 
 // import the function from greet.js (the .js extension is optional)
 // ./ (or ../) means to look for a local file
-import greet from './greet';
+// import greet from './greet';
 
 // $(document).ready(function() {
 //   $('body').prepend('<h1>'+greet('jill')+'</h1>');
 // });
 
-console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+import './carousel';
+
+
+// console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
