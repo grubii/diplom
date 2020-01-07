@@ -1,6 +1,23 @@
 body {
   background-color: lightgray;
 
+  .carousel-caption {
+    background: lightgray;
+    background: rgba(26, 32, 60, 0.5);
+    width: fit-content;
+    border-radius: 3px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  #list {
+    .card {
+      a {
+        text-align: center;
+      }
+    }
+  }
+
   .product .card {
     img {
       margin: 0 auto;

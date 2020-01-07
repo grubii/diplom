@@ -9,7 +9,7 @@
                 You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}" class="alert-link">Logout</a>
             </div>
     {% endif %}
-    <div class="example-wrapper">
+    <div id="list">
         <h1>Products</h1>
         <br>
         {% if app.user and app.user.username == "kek@gmail.com" %}
@@ -48,7 +48,7 @@
                 {% for product in products %}
                 <div class="card col-6 col-md-4 mb-3">
                     <a href="{{ path('product_show', { value: product.name}) }}" class="alert-link">
-                        <img src="{{ asset('images/' ~ product.img) }}" class="card-img-top" alt="." width="300px" height="300px">
+                        <img src="{{ asset('images/' ~ product.img) }}" class="" alt="." width="300px" height="300px">
                         <li>
                             <h5 class="card-title">Name: {{ product.name }}</h5>
                             <br>
