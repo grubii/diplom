@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,64 +21,82 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         {% endblock %}
     </head>
-        <div class="container">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item item1 active">
-                        <img class="d-block w-100" src="{{ asset('images/carousel/banner-fold.png') }}" height="475px">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Galaxy Fold</h5>
-                            <p>Инновационный смартфон с гнущимся экраном.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item item2">
-                        <img class="d-block w-100" src="{{ asset('images/carousel/moto-banner.png') }}" height="475px">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Motorola Razr</h5>
-                            <p>Возвращение к класике.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item item3">
-                        <img class="d-block w-100" src="{{ asset('images/carousel/xr-banner.png') }}" height="475px">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Iphone XR</h5>
-                            <p>Смартфон с головокружительным качеством видеосьёмки.</p>
-                        </div>
-                    </div>
+    <body>
+        <div class="container nav_banner">
+            <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="{{ path('list') }}">LOGO</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ path('list') }}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">My cart</a>
+                        </li>
+                        <li class="nav-item">
+                            {% if app.user %}
+                                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}" class="alert-link nav-link d-inline-block">Logout</a>
+                            {% else %}
+                                <a class="nav-link d-inline-block" href="{{ path('app_register') }}">Sign up</a>
+                                <b>OR</b>
+                                <a class="nav-link d-inline-block" href="{{ path('app_login') }}">Login</a>
+                            {% endif %}
+                        </li>
+                    </ul>
                 </div>
-                <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-        {% block body %}
-            <div class="container">
-            <h1>Welcome to our web magazine!</h1>
-            <div class="col-6">
-                <a href="{{ path('app_register') }}">
-                    <button class="btn btn-success"><h2>Registration</h2></button>
-                </a>
-            </div>
+            </nav>
 
-                <br>
+            <br>
 
-            <div class="col-6">
-                <a href="{{ path('app_login') }}">
-                    <button class="btn btn-success"><h2>Login</h2></button>
-                </a>
-            </div>
+            {% set route = app.request.attributes.get('_route') %}
+            {% if route == 'list' %}
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item item1 active">
+                            <img class="d-block w-100" src="{{ asset('images/carousel/banner-fold.png') }}" height="475px" alt=".">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Galaxy Fold</h5>
+                                <p>Инновационный смартфон с гнущимся экраном.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item item2">
+                            <img class="d-block w-100" src="{{ asset('images/carousel/moto-banner.png') }}" height="475px" alt=".">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Motorola Razr</h5>
+                                <p>Возвращение к класике.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item item3">
+                            <img class="d-block w-100" src="{{ asset('images/carousel/xr-banner.png') }}" height="475px" alt=".">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Iphone XR</h5>
+                                <p>Смартфон с головокружительным качеством видеосьёмки.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            {% endif %}
         </div>
-        {% endblock %}
+
+        {% block body %}{% endblock %}
+
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
 

@@ -1,6 +1,22 @@
 body {
   background-color: lightgray;
 
+  .nav_banner {
+    padding: 0;
+  }
+
+  ul.navbar-nav li {
+    b {
+      color: aliceblue;
+    }
+
+    &:last-of-type {
+      position: absolute;
+      right: 16px;
+      color: beige;
+    }
+  }
+
   .carousel-caption {
     background: lightgray;
     background: rgba(26, 32, 60, 0.5);
