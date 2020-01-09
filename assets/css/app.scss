@@ -1,19 +1,43 @@
 body {
   background-color: lightgray;
+  font-family: 'Roboto', sans-serif;
+  color: #606060;
 
   .nav_banner {
     padding: 0;
   }
 
+  .navbar {
+    background: #D4D5D9;
+    padding: 0 0 0 16px;
+
+    .navbar-brand {
+      width: 160px;
+      height: 70px;
+      padding-top: 10px;
+    }
+
+    .navbar-nav a {
+      color: #606060;
+      width: 85px;
+      text-align: center;
+      height: 70px;
+      padding-top: 25px;
+      &:hover {
+        background: #999;
+        color: #fff;
+      }
+    }
+  }
+
   ul.navbar-nav li {
     b {
-      color: aliceblue;
+      color: #606060;;
     }
 
     &:last-of-type {
       position: absolute;
-      right: 16px;
-      color: beige;
+      right: 0;
     }
   }
 
@@ -38,6 +62,26 @@ body {
     img {
       margin: 0 auto;
       width: 400px;
+    }
+  }
+
+  footer {
+    background: #D4D5D9;
+
+    .row {
+      margin: 30px 0 30px 0;
+    }
+
+    .column-footer {
+      text-align: center;
+
+      p {
+        text-align: left;
+      }
+    }
+
+    .footer-logo img {
+      padding-top: 10px;
     }
   }
 }
