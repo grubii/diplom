@@ -9,9 +9,19 @@
 
 
 # Установка:
+Обновляем composer
+```bash
+composer install
+```
+
 Запускаем локальный сайт
 ```bash
 symfony server:start
+```
+
+Обновляем yarn модули
+```bash
+yarn install
 ```
 
 Запускаем вебпак
