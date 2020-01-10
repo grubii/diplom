@@ -12,6 +12,7 @@
                  <link rel="stylesheet" href="/build/app.css">
         {% endblock %}
         {% block head_css %}
+            <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         {% endblock %}
         {% block head_js %}
@@ -22,9 +23,9 @@
         {% endblock %}
     </head>
     <body>
-        <div class="container nav_banner">
-            <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="{{ path('list') }}">LOGO</a>
+        <div class="nav_banner">
+            <nav class="navbar sticky-top navbar-expand-lg">
+                <a class="navbar-brand" href="{{ path('list') }}"><img src="{{ asset('images/logo.png') }}" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -62,21 +63,21 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item item1 active">
-                            <img class="d-block w-100" src="{{ asset('images/carousel/banner-fold.png') }}" height="475px" alt=".">
+                            <img class="d-block w-100" src="{{ asset('images/carousel/banner-fold.png') }}" height="650px" alt=".">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Galaxy Fold</h5>
                                 <p>Инновационный смартфон с гнущимся экраном.</p>
                             </div>
                         </div>
                         <div class="carousel-item item2">
-                            <img class="d-block w-100" src="{{ asset('images/carousel/moto-banner.png') }}" height="475px" alt=".">
+                            <img class="d-block w-100" src="{{ asset('images/carousel/moto-banner.png') }}" height="650px" alt=".">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Motorola Razr</h5>
                                 <p>Возвращение к класике.</p>
                             </div>
                         </div>
                         <div class="carousel-item item3">
-                            <img class="d-block w-100" src="{{ asset('images/carousel/xr-banner.png') }}" height="475px" alt=".">
+                            <img class="d-block w-100" src="{{ asset('images/carousel/xr-banner.png') }}" height="650px" alt=".">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Iphone XR</h5>
                                 <p>Смартфон с головокружительным качеством видеосьёмки.</p>
@@ -96,6 +97,34 @@
         </div>
 
         {% block body %}{% endblock %}
+
+        <footer class="page-footer font-small blue pt-4">
+            <div class="container text-center text-md-left">
+                <div class="row">
+                    <div class="column-footer footer-logo col-md-4 mt-md-0 mt-3">
+                        <img src="{{ asset('images/logo.png') }}" alt="">
+                    </div>
+
+                    <hr class="clearfix w-100 d-md-none pb-3">
+                    <div class="column-footer col-md-4 mb-md-0 mb-3">
+                        <p>
+                            Orange Moldova SA, str. <br>
+                            Alba Iulia 75, MD-2071, <br>
+                            Chişinău, Moldova
+                        </p>
+                    </div>
+
+                    <div class="column-footer col-md-4 mb-md-0 mb-3">
+                        <p>+373 79 12 56 13</p>
+                        <p>+373 79 12 56 000</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-copyright text-center py-3">© 2020 Copyright:
+                <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+            </div>
+        </footer>
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
