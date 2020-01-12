@@ -4,12 +4,8 @@ $center: 0 auto;
 
 body {
   background-color: lightgray;
-  font-family: 'Roboto', sans-serif;
-  color: #606060;
-
-  .nav_banner {
-    padding: 0;
-  }
+  font-family: 'Roboto', sans-serif!important;
+  color: $text;
 
   .content {
     min-height: calc(100vh - 212px);
@@ -17,7 +13,7 @@ body {
   }
 
   .navbar {
-    background: #D4D5D9;
+    background: $back;
     padding: 0 0 0 16px;
 
     .navbar-brand {
@@ -26,31 +22,32 @@ body {
       padding-top: 10px;
     }
 
-    .navbar-nav a {
-      color: #606060;
-      width: 85px;
-      text-align: center;
-      height: 70px;
-      padding-top: 25px;
-      &:hover {
-        background: #999;
-        color: #fff;
+    ul.navbar-nav {
+      a {
+        color: $text;
+        width: 85px;
+        text-align: center;
+        height: 70px;
+        padding-top: 25px;
+        &:hover {
+          background: #999;
+          color: #fff;
+        }
+      }
+
+      li {
+        b {
+          margin: 0 5px;
+          color: $text;
+        }
+
+        &:last-of-type {
+          position: absolute;
+          right: 0;
+        }
       }
     }
   }
-
-  ul.navbar-nav li {
-    b {
-      color: #606060;;
-    }
-
-    &:last-of-type {
-      position: absolute;
-      right: 0;
-    }
-  }
-
-
 
   #myCarousel {
     margin-bottom: 30px;
@@ -63,7 +60,6 @@ body {
       margin: $center;
       padding: 10px;
     }
-  }
 
   .page-list {
     .card {
@@ -75,13 +71,13 @@ body {
 
   .product .card {
     img {
-      margin: 0 auto;
+      margin: $center;
       width: 400px;
     }
   }
 
   footer {
-    background: #D4D5D9;
+    background: $back;
 
     .row {
       margin: 30px 0 30px 0;
@@ -91,6 +87,8 @@ body {
       text-align: center;
 
       p {
+        margin: $center;
+        width: fit-content;
         text-align: left;
       }
     }
