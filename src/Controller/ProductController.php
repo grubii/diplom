@@ -128,6 +128,12 @@ class ProductController extends AbstractController
                 );
             }
 
+            if ($form->get('category')->getData()) {
+                $product->setCategory(
+                    $form->get('category')->getData()
+                );
+            }
+
             if ($form->get('img')->getData()) {
                 $product->setImg(
                     $form->get('img')->getData()
@@ -178,6 +184,12 @@ class ProductController extends AbstractController
             if ($form->get('description')->getData()) {
                 $product->setDescription(
                     $form->get('description')->getData()
+                );
+            }
+
+            if ($form->get('category')->getData()) {
+                $product->setCategory(
+                    $form->get('category')->getData()
                 );
             }
 
