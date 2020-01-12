@@ -7,6 +7,11 @@ body {
   font-family: 'Roboto', sans-serif!important;
   color: $text;
 
+  .content {
+    min-height: calc(100vh - 212px);
+    margin-bottom: 40px;
+  }
+
   .navbar {
     background: $back;
     padding: 0 0 0 16px;
@@ -44,17 +49,19 @@ body {
     }
   }
 
+  #myCarousel {
+    margin-bottom: 30px;
 
-  .carousel-caption {
-    background: lightgray;
-    background: rgba(26, 32, 60, 0.5);
-    width: fit-content;
-    border-radius: 3px;
-    margin: $center;
-    padding: 10px;
-  }
+    .carousel-caption {
+      background: lightgray;
+      background: rgba(26, 32, 60, 0.5);
+      width: fit-content;
+      border-radius: 3px;
+      margin: $center;
+      padding: 10px;
+    }
 
-  #list {
+  .page-list {
     .card {
       a {
         text-align: center;
@@ -88,6 +95,10 @@ body {
 
     .footer-logo img {
       padding-top: 10px;
+    }
+
+    .fa-address-book {
+      margin-left: -19px;
     }
   }
 }

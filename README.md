@@ -40,5 +40,5 @@ php bin/console doctrine:schema:update
 ```
 Можно залить фикстуры (dev и test окружение)
 ```bash
-php bin/console doctrine:fixtures:load
+doctrine:migrations:migrate
 ```
