@@ -23,7 +23,7 @@
         {% endblock %}
     </head>
     <body>
-        <div class="nav_banner">
+        <div class="content">
             <nav class="navbar sticky-top navbar-expand-lg">
                 <a class="navbar-brand" href="{{ path('list') }}"><img src="{{ asset('images/logo.png') }}" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +43,7 @@
                                 You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}" class="alert-link nav-link d-inline-block">Logout</a>
                             {% else %}
                                 <a class="nav-link d-inline-block" href="{{ path('app_register') }}">Sign up</a>
-                                <b>OR</b>
+                                <b>/</b>
                                 <a class="nav-link d-inline-block" href="{{ path('app_login') }}">Login</a>
                             {% endif %}
                         </li>
@@ -94,9 +94,11 @@
                     </a>
                 </div>
             {% endif %}
+
+            {% block body %}{% endblock %}
         </div>
 
-        {% block body %}{% endblock %}
+
 
         <footer class="page-footer font-small blue pt-4">
             <div class="container text-center text-md-left">
@@ -107,7 +109,9 @@
 
                     <hr class="clearfix w-100 d-md-none pb-3">
                     <div class="column-footer col-md-4 mb-md-0 mb-3">
+
                         <p>
+                            <i class="fas fa-address-book"></i>
                             Orange Moldova SA, str. <br>
                             Alba Iulia 75, MD-2071, <br>
                             Chişinău, Moldova
@@ -115,14 +119,18 @@
                     </div>
 
                     <div class="column-footer col-md-4 mb-md-0 mb-3">
-                        <p>+373 79 12 56 13</p>
-                        <p>+373 79 12 56 000</p>
+                        <p>
+                            <span>
+                                <i class="fas fa-phone-alt"></i>  +373 79 12 56 13<br>
+                                <i class="fas fa-fax"></i> +373 79 12 56 000
+                            </span>
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <div class="footer-copyright text-center py-3">© 2020 Copyright:
-                <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+            <div class="footer-copyright text-center py-3">
+                © 2020 Grubleac Nicolae
             </div>
         </footer>
 

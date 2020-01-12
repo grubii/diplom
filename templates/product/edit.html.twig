@@ -3,15 +3,7 @@
 {% block title %}Edit product{% endblock %}
 
 {% block body %}
-<div class="container">
-    {% if app.user %}
-            <div class="float-right">
-                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-            </div>
-    {% endif %}
-    <a href="{{ path('list') }}"><button class="btn btn-primary">List Products</button></a>
-    <div class="example-wrapper">
-        <br>
+<div class="container page-edit">
         <h2>Edit product</h2>
         {{ form_start(EditProduct) }}
             {{ form_row(EditProduct.name) }}
@@ -30,6 +22,5 @@
                 {{ SuccessMsg }}
             </div>
         {% endif %}
-    </div>
 </div>
 {% endblock %}

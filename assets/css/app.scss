@@ -1,3 +1,7 @@
+$back: #D4D5D9;
+$text: #606060;
+$center: 0 auto;
+
 body {
   background-color: lightgray;
   font-family: 'Roboto', sans-serif;
@@ -5,6 +9,11 @@ body {
 
   .nav_banner {
     padding: 0;
+  }
+
+  .content {
+    min-height: calc(100vh - 212px);
+    margin-bottom: 40px;
   }
 
   .navbar {
@@ -41,16 +50,22 @@ body {
     }
   }
 
-  .carousel-caption {
-    background: lightgray;
-    background: rgba(26, 32, 60, 0.5);
-    width: fit-content;
-    border-radius: 3px;
-    margin: 0 auto;
-    padding: 10px;
+
+
+  #myCarousel {
+    margin-bottom: 30px;
+
+    .carousel-caption {
+      background: lightgray;
+      background: rgba(26, 32, 60, 0.5);
+      width: fit-content;
+      border-radius: 3px;
+      margin: $center;
+      padding: 10px;
+    }
   }
 
-  #list {
+  .page-list {
     .card {
       a {
         text-align: center;
@@ -82,6 +97,10 @@ body {
 
     .footer-logo img {
       padding-top: 10px;
+    }
+
+    .fa-address-book {
+      margin-left: -19px;
     }
   }
 }
