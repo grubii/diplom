@@ -31,13 +31,37 @@ class ProductController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $search = $form->getData();
 
-            if ($search != '') {
+            if ($search['name'] != '') {
                 $products = $this->getDoctrine()
                     ->getRepository(Product::class)
                     ->findLike($search['name']);
 
                 if (count($products) == 0) {
                     $error = "Товаров с таким названием не существует.";
+                }
+
+                $this->redirectToRoute("list");
+            }
+
+            if ($search['category'] != NULL) {
+                $products = $this->getDoctrine()
+                    ->getRepository(Product::class)
+                    ->findByCategory($search['category']);
+
+                if (count($products) == 0) {
+                    $error = "Товаров в этой категории не существует.";
+                }
+
+                $this->redirectToRoute("list");
+            }
+
+            if ($search['name'] != '' && $search['category'] != NULL) {
+                $products = $this->getDoctrine()
+                    ->getRepository(Product::class)
+                    ->findByNameAndCategory($search['name'], $search['category']);
+
+                if (count($products) == 0) {
+                    $error = "Товаров с таким именем в этой категории не существует.";
                 }
 
                 $this->redirectToRoute("list");
@@ -128,6 +152,12 @@ class ProductController extends AbstractController
                 );
             }
 
+            if ($form->get('category')->getData()) {
+                $product->setCategory(
+                    $form->get('category')->getData()
+                );
+            }
+
             if ($form->get('img')->getData()) {
                 $product->setImg(
                     $form->get('img')->getData()
@@ -178,6 +208,12 @@ class ProductController extends AbstractController
             if ($form->get('description')->getData()) {
                 $product->setDescription(
                     $form->get('description')->getData()
+                );
+            }
+
+            if ($form->get('category')->getData()) {
+                $product->setCategory(
+                    $form->get('category')->getData()
                 );
             }
 

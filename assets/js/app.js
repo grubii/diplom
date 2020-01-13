@@ -27,6 +27,4 @@ import './carousel';
 $('.carousel-item img').attr("height", $(window).width() / 2 - 70);
 
 
-
-
 // console.log('Hello Webpack Encore! Edit me in assets/js/app.js');

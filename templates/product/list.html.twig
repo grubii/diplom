@@ -3,70 +3,71 @@
 {% block title %}Product{% endblock %}
 
 {% block body %}
-<div class="container page-list">
-    <h1>Products</h1>
-    <br>
-    {% if app.user and app.user.username == "kek@gmail.com" %}
-        <div class="d-inline">
-            <a href="{{ path('product_new') }}">
-                <button class='btn btn-primary'><i class="fas fa-plus"></i> Add product</button>
-            </a>
-        </div>
-    {% endif %}
-
-    <div class="float-right">
-        {{ form_start(searchProduct) }}
-        <div class="row">
-            <div class="mr-2">
-                {{ form_widget(searchProduct.name) }}
-            </div>
-            <div class="float-right">
-                <button class="btn btn-success"><i class="fas fa-search"></i> Search</button>
-            </div>
-        </div>
-        {{ form_end(searchProduct) }}
-    </div>
-
-    <div class="clearfix"></div>
-
-    <br><br>
-
-    {% if errorCount != '' %}
-        <div class="alert alert-danger" role="alert">
-            {{ errorCount }}
-        </div>
-    {% endif %}
-
-    <ul class="list-unstyled">
-        <div class="row">
-            {% for product in products %}
-            <div class="card col-6 col-md-4 mb-3">
-                <a href="{{ path('product_show', { value: product.name}) }}" class="alert-link">
-                    <img src="{{ asset('images/' ~ product.img) }}" class="" alt="." width="300px" height="300px">
-                    <li>
-                        <h5 class="card-title">Name: {{ product.name }}</h5>
-                        <br>
-                        <p class="card-text"> Description: {{ product.description }}</p>
-                         <div class="float-right badge badge-primary mr-4">Price: {{ product.price }} $</div>
-                    </li>
-
-                     {% if app.user and app.user.username == "kek@gmail.com" %}
-                        <br>
-                        <div class="row mx-auto">
-                            <a href="{{ path('product_edit', { value: product.name}) }}" class="mr-3">
-                                <button class="btn btn-warning"><i class="fas fa-edit"></i> Edit product</button>
-                            </a>
-                            <a href="{{ path('product_delete', { value: product.name}) }}">
-                                <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete product</button>
-                            </a>
-                        </div>
-                        <br>
-                     {% endif %}
+    <div class="container page-list">
+        <h1>Products</h1>
+        <br>
+        {% if app.user and app.user.username == "kek@gmail.com" %}
+            <div class="d-inline">
+                <a href="{{ path('product_new') }}">
+                    <button class='btn btn-primary'><i class="fas fa-plus"></i> Add product</button>
                 </a>
             </div>
-            {% endfor %}
+        {% endif %}
+
+        <div class="search float-right">
+            {{ form_start(searchProduct) }}
+            <div class="row">
+                <div class="mr-2">
+                    {{ form_widget(searchProduct.name) }}
+                    {{ form_widget(searchProduct.category) }}
+                </div>
+                <div class="float-right">
+                    <button class="btn btn-success"><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+            {{ form_end(searchProduct) }}
         </div>
-        <br>
-    </ul>
-</div>
+
+        <div class="clearfix"></div>
+
+        <br><br>
+
+        {% if errorCount != '' %}
+            <div class="alert alert-danger" role="alert">
+                {{ errorCount }}
+            </div>
+        {% endif %}
+
+        <ul class="list-unstyled">
+            <div class="row">
+                {% for product in products %}
+                <div class="card col-6 col-md-4 mb-3">
+                    <a href="{{ path('product_show', { value: product.name}) }}" class="alert-link">
+                        <img src="{{ asset('images/' ~ product.img) }}" class="" alt="." width="300px" height="300px">
+                        <li>
+                            <h5 class="card-title">Name: {{ product.name }}</h5>
+                            <br>
+                            <p class="card-text"> Description: {{ product.description }}</p>
+                             <div class="float-right badge badge-primary mr-4">Price: {{ product.price }} $</div>
+                        </li>
+
+                         {% if app.user and app.user.username == "kek@gmail.com" %}
+                            <br>
+                            <div class="row mx-auto">
+                                <a href="{{ path('product_edit', { value: product.name}) }}" class="mr-3">
+                                    <button class="btn btn-warning"><i class="fas fa-edit"></i> Edit product</button>
+                                </a>
+                                <a href="{{ path('product_delete', { value: product.name}) }}">
+                                    <button class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete product</button>
+                                </a>
+                            </div>
+                            <br>
+                         {% endif %}
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            <br>
+        </ul>
+    </div>
 {% endblock %}
