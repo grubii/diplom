@@ -22,14 +22,43 @@ class ProductRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param $value
+     * @param $name
      * @return Product[]
      */
-    public function findLike($value)
+    public function findLike($name)
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.name LIKE :val')
-            ->setParameter('val', $value . '%')
+            ->setParameter('val', '%' . $name . '%')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @param $category
+     * @return Product[]
+     */
+    public function findByCategory($category)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.category = :val')
+            ->setParameter('val', $category)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @param $name
+     * @param $category
+     * @return Product[]
+     */
+    public function findByNameAndCategory($name, $category)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.name LIKE :name')
+            ->andWhere('p.category = :category')
+            ->setParameter('name', '%' . $name . '%')
+            ->setParameter('category', $category)
             ->getQuery()
             ->getResult();
     }
