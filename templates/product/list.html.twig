@@ -41,7 +41,7 @@
         <ul class="list-unstyled">
             <div class="row">
                 {% for product in products %}
-                <div class="card col-6 col-md-4 mb-3">
+                <div class="card col-12 col-md-6 col-lg-4 mb-3">
                     <a href="{{ path('product_show', { value: product.name}) }}" class="alert-link">
                         <img src="{{ asset('images/' ~ product.img) }}" class="" alt="." width="300px" height="300px">
                         <li>
