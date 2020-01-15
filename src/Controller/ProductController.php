@@ -10,15 +10,17 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Product;
+use Knp\Component\Pager\PaginatorInterface;
 
 class ProductController extends AbstractController
 {
     /**
      * @Route("/products", name="list")
      * @param Request $request
+     * @param PaginatorInterface $paginator
      * @return Response
      */
-    public function list(Request $request)
+    public function list(Request $request, PaginatorInterface $paginator)
     {
         $error = '';
         $products = $this->getDoctrine()
@@ -67,6 +69,12 @@ class ProductController extends AbstractController
                 $this->redirectToRoute("list");
             }
         }
+
+        $products = $paginator->paginate(
+            $products,
+            $request->query->getInt('page', 1),
+            6
+        );
 
         return $this->render('product/list.html.twig', [
             'products' => $products,

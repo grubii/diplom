@@ -23,34 +23,32 @@ class ProductRepository extends ServiceEntityRepository
 
     /**
      * @param $name
-     * @return Product[]
+     * @return Query
      */
     public function findLike($name)
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.name LIKE :val')
             ->setParameter('val', '%' . $name . '%')
-            ->getQuery()
-            ->getResult();
+            ->getQuery();
     }
 
     /**
      * @param $category
-     * @return Product[]
+     * @return Query
      */
     public function findByCategory($category)
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.category = :val')
             ->setParameter('val', $category)
-            ->getQuery()
-            ->getResult();
+            ->getQuery();
     }
 
     /**
      * @param $name
      * @param $category
-     * @return Product[]
+     * @return Query
      */
     public function findByNameAndCategory($name, $category)
     {
@@ -59,8 +57,7 @@ class ProductRepository extends ServiceEntityRepository
             ->andWhere('p.category = :category')
             ->setParameter('name', '%' . $name . '%')
             ->setParameter('category', $category)
-            ->getQuery()
-            ->getResult();
+            ->getQuery();
     }
 
     public function findOneBySomeField($value): ?Product
