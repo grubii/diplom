@@ -63,9 +63,16 @@ body {
   }
 
   .page-list {
-    .card {
-      a {
-        text-align: center;
+    .row {
+      justify-content: space-between;
+      .card {
+        max-width: 360px;
+        a {
+          text-align: center;
+        }
+        img {
+          margin: 10px 0;
+        }
       }
     }
   }
@@ -100,6 +107,90 @@ body {
 
     .fa-address-book {
       margin-left: -19px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  body {
+    .page-list {
+      .row {
+        justify-content: space-between;
+        .card {
+          max-width: 300px;
+          img {
+            width: 250px;
+            height: 250px;
+          }
+          .row {
+            display: block;
+            a {
+              text-align: center;
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1092px) {
+  body {
+    .page-list {
+      .row {
+        .card {
+          max-width: 345px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    .page-list {
+      .row {
+        .card {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  body {
+    .product {
+      .card {
+        img {
+          width: 360px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  body {
+    .product {
+      .card {
+        img {
+          width: 285px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  body {
+    .page-list {
+      .row {
+        .card {
+          max-width: 295px;
+        }
+      }
     }
   }
 }
