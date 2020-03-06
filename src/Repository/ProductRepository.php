@@ -30,7 +30,8 @@ class ProductRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->andWhere('p.name LIKE :val')
             ->setParameter('val', '%' . $name . '%')
-            ->getQuery();
+            ->getQuery()
+            ->getResult();
     }
 
     /**
@@ -42,7 +43,8 @@ class ProductRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->andWhere('p.category = :val')
             ->setParameter('val', $category)
-            ->getQuery();
+            ->getQuery()
+            ->getResult();
     }
 
     /**
@@ -57,7 +59,8 @@ class ProductRepository extends ServiceEntityRepository
             ->andWhere('p.category = :category')
             ->setParameter('name', '%' . $name . '%')
             ->setParameter('category', $category)
-            ->getQuery();
+            ->getQuery()
+            ->getResult();
     }
 
     public function findOneBySomeField($value): ?Product
