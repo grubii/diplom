@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Form\SearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Form\AddProductType;
@@ -26,8 +27,12 @@ class ProductController extends AbstractController
         $products = $this->getDoctrine()
             ->getRepository(Product::class)
             ->findAll();
+        $categorys = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findAll();
 
-        $form = $this->createForm(SearchType::class);
+
+        $form = $this->createForm(SearchType::class, array('categorys' => $categorys));
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -45,7 +50,7 @@ class ProductController extends AbstractController
                 $this->redirectToRoute("list");
             }
 
-            if ($search['category'] != NULL) {
+            if ($search['category'] !== NULL) {
                 $products = $this->getDoctrine()
                     ->getRepository(Product::class)
                     ->findByCategory($search['category']);
@@ -57,7 +62,7 @@ class ProductController extends AbstractController
                 $this->redirectToRoute("list");
             }
 
-            if ($search['name'] != '' && $search['category'] != NULL) {
+            if ($search['name'] != '' && $search['category'] !== NULL) {
                 $products = $this->getDoctrine()
                     ->getRepository(Product::class)
                     ->findByNameAndCategory($search['name'], $search['category']);

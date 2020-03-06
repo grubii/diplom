@@ -13,6 +13,12 @@ class SearchType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $categorys_names = [];
+        foreach ($options['data']['categorys'] as $category) {
+            $categorys_names[] = $category->getName();
+        }
+        $categorys_names = array_flip($categorys_names);
+
         $builder
             ->add('name', TextType::class, [
                 'required' => false,
@@ -20,10 +26,7 @@ class SearchType extends AbstractType
             ->add('category', ChoiceType::class, array(
                 'required' => false,
                 'placeholder' => 'Choose category',
-                'choices'  => array(
-                    'android' => 1,
-                    'iphone' => 2,
-                ),
+                'choices'  => $categorys_names,
             ));
     }
 
