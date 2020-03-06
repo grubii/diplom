@@ -63,7 +63,7 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findOneBySomeField($value): ?Product
+    public function findOneByName($value): ?Product
     {
         try {
             return $this->createQueryBuilder('p')
