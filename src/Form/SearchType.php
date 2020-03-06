@@ -22,6 +22,9 @@ class SearchType extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'required' => false,
+                'attr' => array(
+                    'placeholder' => 'Search by name'
+                ),
             ])
             ->add('category', ChoiceType::class, array(
                 'required' => false,

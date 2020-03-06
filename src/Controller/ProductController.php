@@ -97,7 +97,7 @@ class ProductController extends AbstractController
     {
         $product = $this->getDoctrine()
             ->getRepository(Product::class)
-            ->findOneBySomeField($value);
+            ->findOneByName($value);
 
         if (!$product) {
             throw $this->createNotFoundException(
@@ -119,7 +119,7 @@ class ProductController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $product = $this->getDoctrine()
             ->getRepository(Product::class)
-            ->findOneBySomeField($value);
+            ->findOneByName($value);
 
         $entityManager->remove($product);
         $entityManager->flush();
@@ -140,7 +140,7 @@ class ProductController extends AbstractController
 
         $product = $this->getDoctrine()
             ->getRepository(Product::class)
-            ->findOneBySomeField($value);
+            ->findOneByName($value);
         
         $form = $this->createForm(AddProductType::class, $product);
         $form->handleRequest($request);
@@ -199,12 +199,18 @@ class ProductController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $msg = '';
+        $error_msg = '';
+
 
         $product = new Product();
         $form = $this->createForm(AddProductType::class, $product);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        $nameExist = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->findOneByName($form->get('name')->getData()) ? 1 : 0;
+
+        if ($form->isSubmitted() && $form->isValid() && !$nameExist) {
             $msg = 'Товар успешно добавлен, вы можете добавить ещё один, или вернутся к списку.';
             if ($form->get('name')->getData()) {
                 $product->setName(
@@ -239,6 +245,8 @@ class ProductController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
+        } else {
+            $error_msg = 'Товар с таким именем уже существует.';
         }
 
         $form = $this->createForm(AddProductType::class, $product);
@@ -246,6 +254,7 @@ class ProductController extends AbstractController
         return $this->render('product/new.html.twig', [
             'AddProduct' => $form->createView(),
             'SuccessMsg' => $msg,
+            'ErrorMsg' => $error_msg,
         ]);
     }
 }
