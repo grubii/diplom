@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit product{% endblock %}
+{% block title %}Редактирование товара{% endblock %}
 
 {% block body %}
 <div class="container page-edit">
-        <h2>Edit product</h2>
+        <h2>Изменить продукт</h2>
         {{ form_start(EditProduct) }}
             {{ form_row(EditProduct.name) }}
             <br>
@@ -16,7 +16,9 @@
             <br>
             {{ form_row(EditProduct.img) }}
             <br>
-            <button class="btn btn-success"><i class="fas fa-edit"></i> Edit</button>
+            <div class="save">
+                <button class="btn"><i class="fas fa-edit"></i> Сохранить</button>
+            </div>
         {{ form_end(EditProduct) }}
         <br><br>
         {% if SuccessMsg != '' %}

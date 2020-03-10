@@ -245,7 +245,9 @@ class ProductController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
-        } else {
+        }
+
+        if ($nameExist) {
             $error_msg = 'Товар с таким именем уже существует.';
         }
 

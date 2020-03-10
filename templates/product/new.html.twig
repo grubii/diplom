@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New product{% endblock %}
+{% block title %}Добавление товара{% endblock %}
 
 {% block body %}
 <div class="container page-add">
-    <h2>Add product</h2>
+    <h2>Добавить продукт</h2>
+    <br>
     {{ form_start(AddProduct) }}
         {{ form_row(AddProduct.name) }}
         <br>
@@ -16,7 +17,9 @@
         <br>
         {{ form_row(AddProduct.img) }}
         <br>
-        <button class="btn btn-success"><i class="fas fa-plus"></i> Add</button>
+        <div class="save">
+            <button class="btn"><i class="fas fa-plus"></i> Сохранить</button>
+        </div>
     {{ form_end(AddProduct) }}
     <br><br>
     {% if SuccessMsg != '' %}
