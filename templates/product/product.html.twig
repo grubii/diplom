@@ -1,17 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product {{ product.name }} {% endblock %}
+{% block title %}Товар {{ product.name }} {% endblock %}
 
 {% block body %}
 <div class="container product">
-    <h1>Product</h1>
+    <h1>Товар</h1>
     <div class="card">
         <img src="{{ asset('images/' ~ product.img) }}" class="card-img-top" alt=".">
-        <h5 class="card-title pl-3">Name: {{ product.name }}</h5>
+        <h5 class="card-title pl-3 font-weight-bold">{{ product.name }}</h5>
+        <p class="card-text pl-3">{{ product.description }}</p>
         <br>
-        <p class="card-text pl-3"> Description: {{ product.description }}</p>
-        <br>
-        <div class="badge badge-primary">Price: {{ product.price }} $</div>
+        <div class="float-left pl-3 pb-3 font-weight-bold price">Цена: {{ product.price }} $</div>
+        {% if app.user and app.user.username == "kek@gmail.com" %}
+            <br>
+            <div class="row mx-auto">
+                <div class="button-wrapper mb-2">
+                    <a href="{{ path('product_edit', { value: product.name}) }}" class="mr-3">
+                        <button class="btn"><i class="fas fa-edit"></i></button>
+                    </a>
+                </div>
+                <div class="button-wrapper">
+                    <a href="{{ path('product_delete', { value: product.name}) }}">
+                        <button class="btn"><i class="fas fa-trash-alt"></i></button>
+                    </a>
+                </div>
+            </div>
+            <br>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
