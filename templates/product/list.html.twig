@@ -6,7 +6,7 @@
     <div class="container page-list">
         <h1>Товары</h1>
         <br>
-        {% if app.user and app.user.username == "kek@gmail.com" %}
+        {% if is_granted('ROLE_ADMIN') %}
             <div class="d-inline add-btn-wrapper">
                 <a href="{{ path('product_new') }}">
                     <button class='btn'><i class="fas fa-plus"></i> Добавить продукт</button>
@@ -50,7 +50,7 @@
                              <div class="float-left font-weight-bold price mb-3">Цена: {{ product.price }} $</div>
                         </li>
 
-                         {% if app.user and app.user.username == "kek@gmail.com" %}
+                         {% if is_granted('ROLE_ADMIN') %}
                             <br>
                             <div class="row mx-auto">
                                 <div class="button-wrapper mb-2">
