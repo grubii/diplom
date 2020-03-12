@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Продукты{% endblock %}</title>
         {% block stylesheets %}
             {# 'app' must match the first argument to addEntry() in webpack.config.js #}
             {{ encore_entry_link_tags('app') }}
@@ -36,18 +36,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ path('list') }}">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ path('list') }}">Главная <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">My cart</a>
+                            <a class="nav-link" href="#">Корзина</a>
                         </li>
                         <li class="nav-item">
                             {% if app.user %}
-                                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}" class="alert-link nav-link d-inline-block">Logout</a>
+                                Вы вошли в систему как {{ app.user.username }}, <a href="{{ path('app_logout') }}" class="alert-link nav-link d-inline-block">Выйти</a>
                             {% else %}
-                                <a class="nav-link d-inline-block" href="{{ path('app_register') }}">Sign up</a>
+                                <a class="nav-link d-inline-block" href="{{ path('app_register') }}">Зарегестрироваться</a>
                                 <b>/</b>
-                                <a class="nav-link d-inline-block" href="{{ path('app_login') }}">Login</a>
+                                <a class="nav-link d-inline-block" href="{{ path('app_login') }}">Войти</a>
                             {% endif %}
                         </li>
                     </ul>
