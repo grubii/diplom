@@ -27,12 +27,12 @@ class ProductController extends AbstractController
         $products = $this->getDoctrine()
             ->getRepository(Product::class)
             ->findAll();
-        $categorys = $this->getDoctrine()
+        $categories = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findAll();
 
 
-        $form = $this->createForm(SearchType::class, array('categorys' => $categorys));
+        $form = $this->createForm(SearchType::class, array('categories' => $categories));
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -44,10 +44,10 @@ class ProductController extends AbstractController
                     ->findLike($search['name']);
 
                 if (count($products) == 0) {
-                    $error = "Товаров с таким названием не существует.";
+                    $error = 'Товаров с таким названием не существует.';
                 }
 
-                $this->redirectToRoute("list");
+                $this->redirectToRoute('list');
             }
 
             if ($search['category'] !== NULL) {
@@ -56,7 +56,7 @@ class ProductController extends AbstractController
                     ->findByCategory($search['category']);
 
                 if (count($products) == 0) {
-                    $error = "Товаров в этой категории не существует.";
+                    $error = 'Товаров в этой категории не существует.';
                 }
 
                 $this->redirectToRoute("list");
@@ -68,10 +68,10 @@ class ProductController extends AbstractController
                     ->findByNameAndCategory($search['name'], $search['category']);
 
                 if (count($products) == 0) {
-                    $error = "Товаров с таким именем в этой категории не существует.";
+                    $error = 'Товаров с таким именем в этой категории не существует.';
                 }
 
-                $this->redirectToRoute("list");
+                $this->redirectToRoute('list');
             }
         }
 

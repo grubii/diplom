@@ -11,7 +11,7 @@
         <p class="card-text pl-3">{{ product.description }}</p>
         <br>
         <div class="float-left pl-3 pb-3 font-weight-bold price">Цена: {{ product.price }} $</div>
-        {% if app.user and app.user.username == "kek@gmail.com" %}
+        {% if is_granted('ROLE_ADMIN') %}
             <br>
             <div class="row mx-auto">
                 <div class="button-wrapper mb-2">
