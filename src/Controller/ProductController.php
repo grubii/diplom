@@ -101,7 +101,7 @@ class ProductController extends AbstractController
 
         if (!$product) {
             throw $this->createNotFoundException(
-                'No product found for name '.$value
+                'Продукт с именем '.$value.' не найден.'
             );
         }
 

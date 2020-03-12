@@ -23,12 +23,12 @@ class SearchType extends AbstractType
             ->add('name', TextType::class, [
                 'required' => false,
                 'attr' => array(
-                    'placeholder' => 'Search by name'
+                    'placeholder' => 'Искать по имени'
                 ),
             ])
             ->add('category', ChoiceType::class, array(
                 'required' => false,
-                'placeholder' => 'Choose category',
+                'placeholder' => 'Выбор категории',
                 'choices'  => $categories_names,
             ));
     }
