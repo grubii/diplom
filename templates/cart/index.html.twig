@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Корзина{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'E:/my_project_name/src/Controller/CartController.php'|file_link(0) }}">src/Controller/CartController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'E:/my_project_name/templates/cart/index.html.twig'|file_link(0) }}">templates/cart/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %}
