@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Корзина{% endblock %}
+
+{% block body %}
+<div class="container page-list page-cart">
+    <h1>Моя корзина:</h1>
+    <br>
+    <ul class="list-unstyled">
+        <div class="row">
+            {% for product in products %}
+                <div class="card shadow-sm col-12 col-md-6 col-lg-4 mb-3">
+                    <a href="{{ path('product_show', { value: product.name}) }}">
+                        <img src="{{ asset('images/' ~ product.img) }}" class="" alt="." width="300px" height="300px">
+                        <li>
+                            <h5 class="card-title text-left">{{ product.name }}</h5>
+                            <br>
+                            <p class="card-text text-left">{{ product.description }}</p>
+                            <div class="float-left font-weight-bold price mb-3">Цена: {{ product.price }} $</div>
+                            <a href="{{ path('remove_from_cart', { value: product.id}) }}" class="float-right mb-3">
+                                <button class="btn"><i class="fas fa-trash-alt"></i></button>
+                            </a>
+                        </li>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <br>
+    </ul>
+</div>
+{% endblock %}

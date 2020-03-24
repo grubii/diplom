@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Cart;
 use App\Form\SearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Form\AddProductType;
@@ -86,6 +87,31 @@ class ProductController extends AbstractController
             'searchProduct' => $form->createView(),
             'errorCount' => $error,
         ]);
+    }
+
+     /**
+     * @Route("/product/{value}/add_to_cart", name="add_to_cart")
+     * @param $value
+     * @return RedirectResponse
+     */
+    public function addProductToCart($value)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        $product = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->find($value);
+
+        $user = $this->getUser();
+        $user->getCart()->addProduct($product);
+        $updated_cart = $user->getCart();
+        $user->setCart($updated_cart);
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+
+        return $this->redirectToRoute('list');
     }
 
     /**

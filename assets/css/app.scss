@@ -12,8 +12,12 @@ body {
   font-family: 'Roboto', sans-serif!important;
   color: $text;
 
+  .btn {
+    background: #C0C0C0!important;
+  }
+
   .content {
-    min-height: calc(100vh - 212px);
+    min-height: calc(100vh - 252px);
     margin-bottom: 40px;
   }
 
