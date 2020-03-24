@@ -111,11 +111,6 @@ class ProductController extends AbstractController
         $em->persist($user);
         $em->flush();
 
-        $cart = $this->getDoctrine()
-            ->getRepository(Cart::class)
-            ->find($user->getCart()->getId());
-        dump($cart);die;
-        
         return $this->redirectToRoute('list');
     }
 

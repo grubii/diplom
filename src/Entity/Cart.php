@@ -25,7 +25,7 @@ class Cart
     private $user_id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Product", inversedBy="carts")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Product", inversedBy="carts", fetch="EAGER")
      */
     private $products;
 
