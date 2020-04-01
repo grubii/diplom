@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Пользователей{% endblock %}
+
+{% block body %}
+    <div class="container page-users">
+        <h1>Список пользователей</h1>
+        <br>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Роли</th>
+                <th>Сделать администратором</th>
+                <th>Удаление</th>
+            </tr>
+            </thead>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        {% for role in user.roles %}
+                            {{ role[5:] }} <br>
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <div class="button-wrapper">
+                            <a href="{{ path('user_toAdmin', { id: user.id}) }}">
+                                <button class="btn"><i class="fas fa-user-tie"></i></button>
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="button-wrapper">
+                            <a href="{{ path('user_remove', { id: user.id}) }}">
+                                <button class="btn"><i class="fas fa-trash-alt"></i></button>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

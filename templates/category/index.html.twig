@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Категории{% endblock %}
+
+{% block body %}
+<div class="container page-categories">
+    <h1>Список категорий</h1>
+    <br>
+
+    <button type="button" class="btn" data-toggle="modal" data-target="#ModalCenter">
+        <b>Добавить категорию</b>
+    </button>
+    <br>
+
+    <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Добавление категории</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {{ form_start(categoryForm) }}
+                <div class="modal-body">
+                    <div class="row pl-3">
+                        <div class="mr-2">
+                            <label>Название:</label>
+                            {{ form_widget(categoryForm.name) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">Отменить</button>
+                    <button class="btn">Добавить категорию</button>
+                </div>
+                {{ form_end(categoryForm) }}
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Название категории</th>
+            <th>Удаление категории</th>
+        </tr>
+        </thead>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>
+                    <div class="button-wrapper">
+                        <a href="{{ path('category_remove', { id: category.id}) }}">
+                            <button class="btn"><i class="fas fa-trash-alt"></i></button>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
