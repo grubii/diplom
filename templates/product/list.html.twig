@@ -48,9 +48,11 @@
                             <br>
                             <p class="card-text text-left">{{ product.description }}</p>
                             <div class="float-left font-weight-bold price mb-3">Цена: {{ product.price }} $</div>
-                            <a href="{{ path('add_to_cart', { value: product.id}) }}" class="float-right mb-3">
-                                <button class="btn"><i class="fas fa-cart-arrow-down"></i></button>
-                            </a>
+                            {% if not is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('add_to_cart', { value: product.id}) }}" class="float-right mb-3">
+                                    <button class="btn"><i class="fas fa-cart-arrow-down"></i></button>
+                                </a>
+                            {% endif %}
                         </li>
 
                          {% if is_granted('ROLE_ADMIN') %}

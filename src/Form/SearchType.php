@@ -15,7 +15,7 @@ class SearchType extends AbstractType
     {
         $categories_names = [];
         foreach ($options['data']['categories'] as $category) {
-            $categories_names[] = $category->getName();
+            $categories_names[$category->getId()] = $category->getName();
         }
         $categories_names = array_flip($categories_names);
 

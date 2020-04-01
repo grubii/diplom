@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Заказы{% endblock %}
+
+{% block body %}
+<div class="container page-orders">
+    <h1>Заказы клиентов</h1>
+    <br>
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>Имя</th>
+                <th>Номер телефона</th>
+                <th>Названия товаров</th>
+                <th>Общая цена</th>
+                <th>Удаление</th>
+            </tr>
+        </thead>
+        {% for purchase in purchases %}
+        <tr>
+            <td>{{ purchase.name }}</td>
+            <td>+373{{ purchase.getPhoneNumber }}</td>
+            <td>
+                {% for product in purchase.products %}
+                    {{ product.name }} <br>
+                {% endfor %}
+            </td>
+            <td><b>{{ purchase.getTotalPrice }}$</b></td>
+            <td>
+                <div class="button-wrapper">
+                    <a href="{{ path('purchase_remove', { id: purchase.id}) }}">
+                        <button class="btn"><i class="fas fa-trash-alt"></i></button>
+                    </a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

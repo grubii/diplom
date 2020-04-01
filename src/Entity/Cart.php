@@ -76,4 +76,13 @@ class Cart
 
         return $this;
     }
+
+    public function removeAllProducts(): self
+    {
+        if (!$this->products->isEmpty()) {
+            $this->products->clear();
+        }
+
+        return $this;
+    }
 }

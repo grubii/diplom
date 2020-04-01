@@ -6,26 +6,74 @@
 <div class="container page-list page-cart">
     <h1>Моя корзина:</h1>
     <br>
-    <ul class="list-unstyled">
-        <div class="row">
-            {% for product in products %}
-                <div class="card shadow-sm col-12 col-md-6 col-lg-4 mb-3">
-                    <a href="{{ path('product_show', { value: product.name}) }}">
-                        <img src="{{ asset('images/' ~ product.img) }}" class="" alt="." width="300px" height="300px">
-                        <li>
-                            <h5 class="card-title text-left">{{ product.name }}</h5>
-                            <br>
-                            <p class="card-text text-left">{{ product.description }}</p>
-                            <div class="float-left font-weight-bold price mb-3">Цена: {{ product.price }} $</div>
-                            <a href="{{ path('remove_from_cart', { value: product.id}) }}" class="float-right mb-3">
-                                <button class="btn"><i class="fas fa-trash-alt"></i></button>
-                            </a>
-                        </li>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
+    {% if errorEmptyCart == '' %}
+        <ul class="list-unstyled">
+            <div class="row">
+                {% set finalPrice = 0 %}
+                {% for product in products %}
+                    {% set finalPrice = finalPrice + product.price %}
+                    <div class="card shadow-sm col-12 col-md-6 col-lg-4 mb-3">
+                        <a href="{{ path('product_show', { value: product.name}) }}">
+                            <img src="{{ asset('images/' ~ product.img) }}" class="" alt="." width="300px" height="300px">
+                            <li>
+                                <h5 class="card-title text-left">{{ product.name }}</h5>
+                                <br>
+                                <p class="card-text text-left">{{ product.description }}</p>
+                                <div class="float-left font-weight-bold price mb-3">Цена: {{ product.price }} $</div>
+                                <a href="{{ path('remove_from_cart', { value: product.id}) }}" class="float-right mb-3">
+                                    <button class="btn"><i class="fas fa-trash-alt"></i></button>
+                                </a>
+                            </li>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </ul>
         <br>
-    </ul>
+        <h4>Итоговая цена: <b class="text-primary">{{ finalPrice }}$</b></h4>
+        <br>
+        <button type="button" class="btn" data-toggle="modal" data-target="#ModalCenter">
+            <b>Подтвердить заказ</b>
+        </button>
+
+        <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Подтверждение заказа</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {{ form_start(orderForm) }}
+                    <div class="modal-body">
+                        <div class="row pl-3">
+                            <div class="mr-2">
+                                <label>Имя:</label>
+                                {{ form_widget(orderForm.name) }}
+                                <br>
+                                <label>Номер телефона:</label>
+                                {{ form_widget(orderForm.phone_number) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">Отменить</button>
+                        <button class="btn">Подтвердить заказ</button>
+                    </div>
+                    {{ form_end(orderForm) }}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        {% if successMsg != '' %}
+            <div class="alert alert-success" role="alert">
+                {{ successMsg }}
+            </div>
+        {% endif %}
+        <div class="alert alert-dark" role="alert">
+            {{ errorEmptyCart }}
+        </div>
+    {% endif %}
 </div>
 {% endblock %}

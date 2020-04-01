@@ -38,9 +38,22 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ path('list') }}">Главная <span class="sr-only">(current)</span></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('cart') }}">Корзина</a>
-                        </li>
+                        {% if not is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('cart') }}">Корзина</a>
+                            </li>
+                        {% endif %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('purchases') }}">Заказы</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('categories') }}">Категории товаров</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('users') }}">Список пользователей</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
                             {% if app.user %}
                                 Вы вошли в систему как <b>{{ app.user.username }}</b>, <a href="{{ path('app_logout') }}" class="alert-link nav-link d-inline-block">Выйти</a>
