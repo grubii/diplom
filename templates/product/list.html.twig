@@ -37,46 +37,46 @@
             </div>
         {% endif %}
 
-        <ul class="list-unstyled">
-            <div class="row">
-                {% for product in products %}
-                <div class="card shadow-sm col-12 col-md-6 col-lg-4 mb-3">
-                    <a href="{{ path('product_show', { value: product.name}) }}">
-                        <img src="{{ asset('images/' ~ product.img) }}" class="" alt="." width="300px" height="300px">
-                        <li>
-                            <h5 class="card-title text-left">{{ product.name }}</h5>
-                            <br>
-                            <p class="card-text text-left">{{ product.description }}</p>
-                            <div class="float-left font-weight-bold price mb-3">Цена: {{ product.price }} $</div>
-                            {% if not is_granted('ROLE_ADMIN') %}
-                                <a href="{{ path('add_to_cart', { value: product.id}) }}" class="float-right mb-3">
-                                    <button class="btn"><i class="fas fa-cart-arrow-down"></i></button>
-                                </a>
-                            {% endif %}
-                        </li>
 
-                         {% if is_granted('ROLE_ADMIN') %}
-                            <br>
-                            <div class="row mx-auto">
-                                <div class="button-wrapper mb-2">
-                                    <a href="{{ path('product_edit', { value: product.name}) }}" class="mr-3">
-                                        <button class="btn"><i class="fas fa-edit"></i></button>
-                                    </a>
-                                </div>
-                                <div class="button-wrapper">
-                                    <a href="{{ path('product_delete', { value: product.name}) }}">
-                                        <button class="btn"><i class="fas fa-trash-alt"></i></button>
-                                    </a>
-                                </div>
+        <div class="row">
+            {% for product in products %}
+            <div class="card shadow-sm col-12 col-md-6 col-lg-4 mb-3">
+                <a href="{{ path('product_show', { value: product.name}) }}">
+                    <img src="{{ asset('images/' ~ product.img) }}" class="" alt="." width="300px" height="300px">
+                    <div>
+                        <h5 class="card-title text-left">{{ product.name }}</h5>
+                        <br>
+                        <p class="card-text text-left">{{ product.description }}</p>
+                        <div class="float-left font-weight-bold price mb-3">Цена: {{ product.price }} $</div>
+                        {% if not is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('add_to_cart', { value: product.id}) }}" class="float-right mb-3">
+                                <button class="btn" aria-label="To cart"><i class="fas fa-cart-arrow-down"></i></button>
+                            </a>
+                        {% endif %}
+                    </div>
+
+                     {% if is_granted('ROLE_ADMIN') %}
+                        <br>
+                        <div class="row mx-auto">
+                            <div class="button-wrapper mb-2">
+                                <a href="{{ path('product_edit', { value: product.name}) }}" class="mr-3">
+                                    <button class="btn"><i class="fas fa-edit"></i></button>
+                                </a>
                             </div>
-                            <br>
-                         {% endif %}
-                    </a>
-                </div>
-                {% endfor %}
+                            <div class="button-wrapper">
+                                <a href="{{ path('product_delete', { value: product.name}) }}">
+                                    <button class="btn"><i class="fas fa-trash-alt"></i></button>
+                                </a>
+                            </div>
+                        </div>
+                        <br>
+                     {% endif %}
+                </a>
             </div>
-            <br>
-        </ul>
+            {% endfor %}
+        </div>
+        <br>
+
         <div class="navigation">
             {{ knp_pagination_render(products) }}
         </div>

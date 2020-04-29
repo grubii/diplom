@@ -7,7 +7,6 @@
     <h1>Моя корзина:</h1>
     <br>
     {% if errorEmptyCart == '' %}
-        <ul class="list-unstyled">
             <div class="row">
                 {% set finalPrice = 0 %}
                 {% for product in products %}
@@ -15,7 +14,7 @@
                     <div class="card shadow-sm col-12 col-md-6 col-lg-4 mb-3">
                         <a href="{{ path('product_show', { value: product.name}) }}">
                             <img src="{{ asset('images/' ~ product.img) }}" class="" alt="." width="300px" height="300px">
-                            <li>
+                            <div>
                                 <h5 class="card-title text-left">{{ product.name }}</h5>
                                 <br>
                                 <p class="card-text text-left">{{ product.description }}</p>
@@ -23,12 +22,11 @@
                                 <a href="{{ path('remove_from_cart', { value: product.id}) }}" class="float-right mb-3">
                                     <button class="btn"><i class="fas fa-trash-alt"></i></button>
                                 </a>
-                            </li>
+                            </div>
                         </a>
                     </div>
                 {% endfor %}
             </div>
-        </ul>
         <br>
         <h4>Итоговая цена: <b class="text-primary">{{ finalPrice }}$</b></h4>
         <br>
