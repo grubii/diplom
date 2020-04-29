@@ -22,8 +22,6 @@ import $ from 'jquery';
 //   $('body').prepend('<h1>'+greet('jill')+'</h1>');
 // });
 
-import './carousel';
-
 $('.carousel-item img').attr("height", $(window).width() / 2 - 70);
 
 
