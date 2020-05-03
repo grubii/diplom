@@ -1,44 +1,44 @@
-# Магазин
+# Symfony ONLINE SHOP
 
-- Использует php 7.3+ как бэкенд (Symfony 5)
-- БД MySQL
+- Use php 7.3+ for backend (Symfony 5)
+- Database MySQL
 
 ---
 
-- Сервер должен перенаправлять все запросы на `public/index.html`
+- server push all query's on `public/index.html`
 
 
-# Установка:
-Обновляем composer
+# INSTALL:
+update composer
 ```bash
 composer install
 ```
 
-Запускаем локальный сайт
+up server with symfony
 ```bash
 symfony server:start
 ```
 
-Обновляем yarn модули
+update yarn modules
 ```bash
 yarn install
 ```
 
-Запускаем вебпак
+up webpuck
 ```bash
 yarn encore dev --watch
 ```
 
-### Установка БД (var/diplom.sql)
-Создаём локальную базу
+### install database (var/diplom.sql)
+Make local database
 ```bash
 php bin/console doctrine:database:create
 ```
-Обновляем схему
+Update schema
 ```bash
 php bin/console doctrine:schema:update
 ```
-Можно залить фикстуры (dev и test окружение)
+fixtures
 ```bash
 doctrine:migrations:migrate
 ```
