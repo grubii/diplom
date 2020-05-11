@@ -22,7 +22,9 @@ import $ from 'jquery';
 //   $('body').prepend('<h1>'+greet('jill')+'</h1>');
 // });
 
-$('.carousel-item img').attr("height", $(window).width() / 2 - 70);
+var del = $(window).width() >= 425 ? 3 : 1;
+
+$('.carousel-item img').attr("height", $(window).width() / del);
 
 
 // console.log('Hello Webpack Encore! Edit me in assets/js/app.js');

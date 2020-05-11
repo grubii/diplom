@@ -6,7 +6,8 @@
          Diplome work 'Security web aplication on Symfony,
          the best online shop.">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>{% block title %}Продукты{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('images/sh-icon.jp2') }}" type="image/png">
+        <title>{% block title %}{% endblock %}</title>
         {% block stylesheets %}
             {# 'app' must match the first argument to addEntry() in webpack.config.js #}
             {{ encore_entry_link_tags('app') }}
@@ -32,7 +33,7 @@
     <body>
         <div class="content">
             <nav class="navbar sticky-top navbar-expand-lg">
-                <a class="navbar-brand" href="{{ path('list') }}"><img src="{{ asset('images/logo.jp2') }}" alt=""></a>
+                <a class="navbar-brand" href="{{ path('default') }}"><img src="{{ asset('images/logo.jp2') }}" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -40,7 +41,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ path('list') }}">Главная <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ path('default') }}">Главная <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('list') }}">Каталог</a>
                         </li>
                         {% if not is_granted('ROLE_ADMIN') %}
                             <li class="nav-item">
@@ -72,49 +76,6 @@
             </nav>
 
             <br>
-
-            {% set route = app.request.attributes.get('_route') %}
-            {% if route == 'list' %}
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item item1 active">
-                            <img loading="lazy" class="d-block w-100" src="{{ asset('images/carousel/banner-fold.jp2') }}" alt=".">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Galaxy Fold</h5>
-                                <p>Инновационный смартфон с гнущимся экраном.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item item2">
-                            <img loading="lazy" class="d-block w-100" src="{{ asset('images/carousel/moto-banner.jp2') }}" alt=".">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Motorola Razr</h5>
-                                <p>Возвращение к класике.</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item item3">
-                            <img loading="lazy" class="d-block w-100" src="{{ asset('images/carousel/xr-banner.jp2') }}" alt=".">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Iphone XR</h5>
-                                <p>Смартфон с головокружительным качеством видеосьёмки.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            {% endif %}
-
             {% block body %}{% endblock %}
         </div>
 

@@ -3,6 +3,7 @@ $text: #606060;
 $card: #efefef;
 
 $center: 0 auto;
+
 .navbar-toggler-icon {
   background-image: url(https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png)!important;
 }
@@ -11,6 +12,23 @@ body {
   background-color: lightgray;
   font-family: 'Roboto', sans-serif!important;
   color: $text;
+
+  .parallax {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-image: url(https://goinside.co/wp-content/uploads/sites/5/2015/11/banner-contato.png);
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    h1 {
+      padding-right: 10%;
+      width: fit-content;
+      color: whitesmoke;
+    }
+  }
 
   .btn {
     background: #C0C0C0!important;
@@ -59,6 +77,8 @@ body {
   }
 
   #myCarousel {
+    width: 80%;
+    margin: 0 auto;
     margin-bottom: 30px;
 
     .carousel-caption {
@@ -174,6 +194,11 @@ body {
 
 @media (max-width: 1200px) {
   body {
+    .parallax {
+      h1 {
+        font-size: 30px;
+      }
+    }
     .page-list {
       .row {
         justify-content: center;
@@ -230,6 +255,17 @@ body {
 
 @media (max-width: 425px) {
   body {
+    #myCarousel {
+      width: auto;
+      margin: 0;
+    }
+    .parallax {
+      align-content: center;
+      h1 {
+        text-align: center;
+        padding: 0;
+      }
+    }
     .page-list {
       .add-btn-wrapper {
         display: block!important;
