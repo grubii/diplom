@@ -13,10 +13,10 @@
             {{ encore_entry_link_tags('app') }}
 
             <!-- Renders a link tag (if your module requires any CSS)-->
-                 <link rel="stylesheet" href="/build/app.css"> <!-- !!-->
+                 <link rel="stylesheet" href="/build/app.css">
         {% endblock %}
         {% block head_css %}
-            <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> <!-- !!-->
+            <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         {% endblock %}
         {% block head_js %}
@@ -32,7 +32,7 @@
     </head>
     <body>
         <div class="content">
-            <nav class="navbar sticky-top navbar-expand-lg">
+            <nav class="navbar sticky-top navbar-expand-lg shadow-sm">
                 <a class="navbar-brand" href="{{ path('default') }}"><img src="{{ asset('images/logo.jp2') }}" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
