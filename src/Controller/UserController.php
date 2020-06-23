@@ -30,15 +30,17 @@ class UserController extends AbstractController
      */
     public function userRemove($id)
     {
+      if ($id != 1) {
         $user = $this->getDoctrine()
-            ->getRepository(User::class)
-            ->find($id);
+          ->getRepository(User::class)
+          ->find($id);
 
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($user);
         $entityManager->flush();
 
         return $this->redirectToRoute('users');
+      }
     }
 
     /**

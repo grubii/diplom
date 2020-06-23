@@ -6,9 +6,18 @@
 <div class="container product">
     <h1>Товар</h1>
     <div class="card">
-        <img src="{{ asset('images/' ~ product.img) }}" class="card-img-top" alt=".">
+        <img src="{{ asset('images/' ~ product.img) }}" class="card-img-top rotate" alt=".">
         <h5 class="card-title pl-3 font-weight-bold">{{ product.name }}</h5>
-        <p class="card-text pl-3">{{ product.description }}</p>
+        <p class="card-text pl-3">
+            {% set charachters = product.description|split('.') %}
+            {% for character in charachters %}
+        <table class="table table-active table-bordered table-hover">
+            <tr>
+                <td>{{ character }}</td>
+            </tr>
+        </table>
+            {% endfor %}
+        </p>
         <br>
         <div class="float-left pl-3 pb-3 font-weight-bold price">Цена: {{ product.price }} $</div>
         {% if is_granted('ROLE_ADMIN') %}

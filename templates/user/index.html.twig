@@ -6,7 +6,7 @@
     <div class="container page-users">
         <h1>Список пользователей</h1>
         <br>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-hover">
             <thead class="thead-light">
             <tr>
                 <th>ID</th>
@@ -34,9 +34,11 @@
                     </td>
                     <td>
                         <div class="button-wrapper">
-                            <a href="{{ path('user_remove', { id: user.id}) }}">
-                                <button class="btn"><i class="fas fa-trash-alt"></i></button>
-                            </a>
+                            {% if user.id != 1 %}
+                                <a href="{{ path('user_remove', { id: user.id}) }}">
+                                    <button class="btn"><i class="fas fa-trash-alt"></i></button>
+                                </a>
+                            {% endif %}
                         </div>
                     </td>
                 </tr>

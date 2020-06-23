@@ -13,11 +13,47 @@ body {
   font-family: 'Roboto', sans-serif!important;
   color: $text;
 
+  .ef3d {
+    overflow: hidden;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    -ms-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+
+
+    &:hover {
+      -webkit-transform: translateX(-5px) translateY(-5px);
+      -moz-transform: translateX(-5px) translateY(-5px);
+      -o-transform: translateX(-5px) translateY(-5px);
+      -ms-transform: translateX(-5px) translateY(-5px);
+      transform: translateX(-5px) translateY(-5px);
+    }
+  }
+
+  .rotate {
+    overflow: hidden;
+    -webkit-transition: all 0.8s ease;
+    -moz-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
+    -ms-transition: all 0.8s ease;
+    transition: all 0.8s ease;
+
+
+    &:hover {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
   .parallax {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-image: url(https://goinside.co/wp-content/uploads/sites/5/2015/11/banner-contato.png);
+    background-image: url(https://images.unsplash.com/photo-1591386618629-4ef48ffdc0c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1850&q=120);
     min-height: 500px;
     background-attachment: fixed;
     background-position: center;
