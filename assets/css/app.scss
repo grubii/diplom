@@ -31,21 +31,21 @@ body {
     }
   }
 
-  .rotate {
+  .scale {
     overflow: hidden;
-    -webkit-transition: all 0.8s ease;
-    -moz-transition: all 0.8s ease;
-    -o-transition: all 0.8s ease;
-    -ms-transition: all 0.8s ease;
-    transition: all 0.8s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    transition: all 0.4s ease;
 
 
     &:hover {
-      -webkit-transform: rotate(360deg);
-      -moz-transform: rotate(360deg);
-      -o-transform: rotate(360deg);
-      -ms-transform: rotate(360deg);
-      transform: rotate(360deg);
+      -webkit-transform: scale(1.07);
+      -moz-transform: scale(1.07);
+      -o-transform: scale(1.07);
+      -ms-transform: scale(1.07);
+      transform: scale(1.07);
     }
   }
 

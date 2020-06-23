@@ -34,7 +34,7 @@
                         <div class="button-wrapper">
                             {% if is_admin == false %}
                                 <a href="{{ path('user_toAdmin', { id: user.id}) }}">
-                                    <button class="btn"><i class="fas fa-user-tie"></i></button>
+                                    <button class="btn scale"><i class="fas fa-user-tie"></i></button>
                                 </a>
                             {% endif %}
                         </div>
@@ -43,7 +43,7 @@
                         <div class="button-wrapper">
                             {% if is_admin == true %}
                                 <a href="{{ path('removeAdminRole', { id: user.id}) }}">
-                                    <button class="btn"><i class="fas fa-user-alt-slash"></i></button>
+                                    <button class="btn scale"><i class="fas fa-user-alt-slash"></i></button>
                                 </a>
                             {% endif %}
                         </div>
@@ -52,7 +52,7 @@
                         <div class="button-wrapper">
                             {% if user.id != 1 %}
                                 <a href="{{ path('user_remove', { id: user.id}) }}">
-                                    <button class="btn"><i class="fas fa-trash-alt"></i></button>
+                                    <button class="btn scale"><i class="fas fa-trash-alt"></i></button>
                                 </a>
                             {% endif %}
                         </div>
