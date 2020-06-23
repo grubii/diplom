@@ -97,6 +97,18 @@ body {
           color: #fff;
         }
       }
+      .cart-count {
+        color: white;
+
+        position: absolute;
+        left: 476px;
+        top: 15px;
+        text-align: center;
+        width: 21px;
+        height: 21px;
+        border-radius: 100%;
+        background: red;
+      }
 
       li {
         b {

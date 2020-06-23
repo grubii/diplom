@@ -13,23 +13,39 @@
                 <th>Email</th>
                 <th>Роли</th>
                 <th>Сделать администратором</th>
+                <th>Забрать права администратора</th>
                 <th>Удаление</th>
             </tr>
             </thead>
             {% for user in users %}
+                {% set is_admin = false %}
                 <tr>
                     <td>{{ user.id }}</td>
                     <td>{{ user.email }}</td>
                     <td>
                         {% for role in user.roles %}
                             {{ role[5:] }} <br>
+                            {% if role[5:] == "ADMIN" %}
+                                {% set is_admin = true %}
+                            {% endif %}
                         {% endfor %}
                     </td>
                     <td>
                         <div class="button-wrapper">
-                            <a href="{{ path('user_toAdmin', { id: user.id}) }}">
-                                <button class="btn"><i class="fas fa-user-tie"></i></button>
-                            </a>
+                            {% if is_admin == false %}
+                                <a href="{{ path('user_toAdmin', { id: user.id}) }}">
+                                    <button class="btn"><i class="fas fa-user-tie"></i></button>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="button-wrapper">
+                            {% if is_admin == true %}
+                                <a href="{{ path('removeAdminRole', { id: user.id}) }}">
+                                    <button class="btn"><i class="fas fa-user-alt-slash"></i></button>
+                                </a>
+                            {% endif %}
                         </div>
                     </td>
                     <td>

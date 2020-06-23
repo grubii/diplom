@@ -86,6 +86,20 @@ class User implements UserInterface
         return $this;
     }
 
+    public function removeRoleAdmin(): self
+    {
+      $roles = $this->roles;
+      for ($i = 0; $i < count($roles); $i++) {
+        if ($roles[$i] == 'ROLE_ADMIN') {
+          unset($roles[$i]);
+        }
+      }
+
+      $this->roles = $roles;
+
+      return $this;
+    }
+
     /**
      * @see UserInterface
      */

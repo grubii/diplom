@@ -62,4 +62,24 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('users');
     }
+
+  /**
+   * @Route("/users/user/{id}/removeAdminRole", name="removeAdminRole")
+   * @param $id
+   * @return RedirectResponse
+   */
+  public function removeAdminRole($id)
+  {
+    $user = $this->getDoctrine()
+      ->getRepository(User::class)
+      ->find($id);
+
+    $user->removeRoleAdmin();
+
+    $entityManager = $this->getDoctrine()->getManager();
+    $entityManager->persist($user);
+    $entityManager->flush();
+
+    return $this->redirectToRoute('users');
+  }
 }
