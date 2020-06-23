@@ -316,6 +316,12 @@ body {
       }
     }
 
+    .product {
+        .card {
+          padding: 0;
+        }
+    }
+
     .page-edit, .page-add, .page-login, .page-register {
       form {
         width: 400px;
@@ -334,6 +340,8 @@ body {
       align-content: center;
       h1 {
         text-align: center;
+        font-size: 2.5rem;
+
         padding: 0;
       }
     }
